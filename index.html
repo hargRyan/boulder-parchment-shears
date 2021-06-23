@@ -13,13 +13,27 @@
             Returns randomly either rock, paper, or scissors
             */
            
+            let choice = Math.floor(Math.random() * 3) + 1;
+
+            switch (choice) {
+                case 1:
+                    return "boulder";
+                case 2:
+                    return "parchment";
+                case 3:
+                    return "shears";
+                default:
+                    return "You broke it";
+            }
         }
 
         function playRound(playerSelection, computerSelection) {
             /* Takes in the parameters and returns a string that returns the winner of the round.
             Should be case insensitive, so rock, ROCK, and rOck should all work. 
             */
+            
 
+            
         }
 
         function game() {
