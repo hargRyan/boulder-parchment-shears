@@ -8,6 +8,10 @@
 </head>
 <body>
     <script>
+
+        let playerScore = 0;
+        let computerScore = 0;
+
         function computerPlay() {
             /*
             Returns randomly either rock, paper, or scissors
@@ -31,6 +35,47 @@
             /* Takes in the parameters and returns a string that returns the winner of the round.
             Should be case insensitive, so rock, ROCK, and rOck should all work. 
             */
+
+            let playerChoice = playerSelection.toLowerCase();
+            
+
+            switch (playerChoice) {
+                
+                case "boulder":
+                    if (playerChoice === computerSelection) {
+                        console.log("It's a tie!");
+                    } 
+                    else if (computerSelection === "shears") {
+                        console.log("You win!");
+                        playerScore += 1;
+                    } else {
+                        console.log("You lose!");
+                        computerScore += 1;
+                    }
+
+                    case "parchment":
+                    if (playerChoice === computerSelection) {
+                        return "It's a tie!"
+                    } 
+                    else if (computerSelection === "boulder") {
+                        return "You win!";
+                    } else {
+                        return "You lose!";
+                    }
+
+                    case "shears":
+                    if (playerChoice === computerSelection) {
+                        return "It's a tie!"
+                    } 
+                    else if (computerSelection === "parchment") {
+                        return "You win!"
+                    } else {
+                        return "You lose!"
+                    }
+
+                    default:
+                        return "Something went wrong. :("
+            }
             
 
             
@@ -40,7 +85,21 @@
             /*
             The game should call playRound() 5 times, keeps the score of those rounds, and report a winner or loser at the end.
             */
+           playerScore = 0;
+           computerScore = 0;
+            
+            for (let index = 0; index <= 4; index++) {
+                let input = prompt("Please select boulder, parchment, or shears", "boulder");
+                playRound(input, computerPlay());
+            }
 
+            console.log(`You won ${playerScore} games. The computer won ${computerScore} games.`);
+
+            if (playerScore>computerScore) {
+                console.log("Congratulations! You win!");
+            } else {
+                console.log("The computer won, better luck next time!");
+            }
         }
     </script>
 </body>
