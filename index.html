@@ -55,26 +55,30 @@
 
                     case "parchment":
                     if (playerChoice === computerSelection) {
-                        return "It's a tie!"
+                        console.log("It's a tie!");
                     } 
                     else if (computerSelection === "boulder") {
-                        return "You win!";
+                        console.log("You win!");
+                        playerScore += 1;
                     } else {
-                        return "You lose!";
+                        console.log("You lose!");
+                        computerScore += 1;
                     }
 
                     case "shears":
                     if (playerChoice === computerSelection) {
-                        return "It's a tie!"
+                        console.log("It's a tie!");
                     } 
                     else if (computerSelection === "parchment") {
-                        return "You win!"
+                        console.log("You win!");
+                        playerScore += 1;
                     } else {
-                        return "You lose!"
+                        console.log("You lose!");
+                        computerScore += 1;
                     }
 
                     default:
-                        return "Something went wrong. :("
+                        console.log("Something went wrong. :(");
             }
             
 
