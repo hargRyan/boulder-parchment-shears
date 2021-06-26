@@ -1,6 +1,17 @@
 let playerScore = 0;
 let computerScore = 0;
 
+function getUserScore() {
+    return playerScore;
+}
+
+function getComputerScore () {
+    return computerScore;
+}
+
+document.getElementById('user-wins').innerText = getUserScore();
+document.getElementById('cpu-wins').innerText = getComputerScore();
+
 function computerPlay() {
      /*
     Returns randomly either rock, paper, or scissors
@@ -32,45 +43,45 @@ function playRound(playerSelection, computerSelection) {
         
         case "boulder":
             if (playerChoice === computerSelection) {
-                console.log("It's a tie!");
+                document.getElementById('game-text').innerText = "It's a tie!";
                 break;
             } 
             else if (computerSelection === "shears") {
-                console.log("You win!");
+                document.getElementById('game-text').innerText = "You win!";
                 playerScore += 1;
                 break;
             } else {
-                console.log("You lose!");
+                document.getElementById('game-text').innerText = "You lose!";
                 computerScore += 1;
                 break;
             }
 
             case "parchment":
             if (playerChoice === computerSelection) {
-                console.log("It's a tie!");
+                document.getElementById('game-text').innerText = "It's a tie!";
                 break;
             } 
             else if (computerSelection === "boulder") {
-                console.log("You win!");
+                document.getElementById('game-text').innerText = "You win!";
                 playerScore += 1;
                 break;
             } else {
-                console.log("You lose!");
+                document.getElementById('game-text').innerText = "You lose!";
                 computerScore += 1;
                 break;
             }
 
             case "shears":
             if (playerChoice === computerSelection) {
-                console.log("It's a tie!");
+                document.getElementById('game-text').innerText = "It's a tie!";
                 break;
             } 
             else if (computerSelection === "parchment") {
-                console.log("You win!");
+                document.getElementById('game-text').innerText = "You win!";
                 playerScore += 1;
                 break;
             } else {
-                console.log("You lose!");
+                document.getElementById('game-text').innerText = "You lose!";
                 computerScore += 1;
                 break;
             }
@@ -82,3 +93,17 @@ function playRound(playerSelection, computerSelection) {
 
     
 }
+
+const buttons = document.querySelectorAll('button');
+
+buttons.forEach((button) => {
+
+    // and for each one we add a 'click' listener
+    button.addEventListener('click', () => {
+        
+      playRound(button.id, computerPlay());
+      document.getElementById('user-wins').innerText = getUserScore();
+      document.getElementById('cpu-wins').innerText = getComputerScore();
+
+    });
+  });
