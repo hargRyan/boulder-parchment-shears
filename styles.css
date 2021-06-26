@@ -7,5 +7,19 @@ p {
     margin: 5px 0 10px 0;
 }
 
+#score {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#game-text {
+    display: flex;
+    justify-content: center;
+}
+
+#buttons {
+    display: flex;
+    justify-content: center;
+}
 
 
