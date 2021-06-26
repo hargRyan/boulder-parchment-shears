@@ -9,6 +9,14 @@ function getComputerScore () {
     return computerScore;
 }
 
+function isWinner () { //should return false but is returning true when both score are 0
+    if (getUserScore() === 5 || getComputerScore() === 5) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 document.getElementById('user-wins').innerText = getUserScore();
 document.getElementById('cpu-wins').innerText = getComputerScore();
 
@@ -100,10 +108,14 @@ buttons.forEach((button) => {
 
     // and for each one we add a 'click' listener
     button.addEventListener('click', () => {
-        
+
       playRound(button.id, computerPlay());
       document.getElementById('user-wins').innerText = getUserScore();
       document.getElementById('cpu-wins').innerText = getComputerScore();
+
+      if (isWinner) {
+        document.getElementById('game-text').innerText = "Someone won!";
+      } else return;
 
     });
   });
