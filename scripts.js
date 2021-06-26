@@ -1,6 +1,11 @@
 let playerScore = 0;
 let computerScore = 0;
 
+document.getElementById('user-wins').innerText = getUserScore();
+document.getElementById('cpu-wins').innerText = getComputerScore();
+
+const buttons = document.querySelectorAll('button');
+
 function getUserScore() {
     return playerScore;
 }
@@ -17,8 +22,10 @@ function isWinner () { //should return false but is returning true when both sco
     }
 }
 
-document.getElementById('user-wins').innerText = getUserScore();
-document.getElementById('cpu-wins').innerText = getComputerScore();
+function updateScore() {
+    document.getElementById('user-wins').innerText = getUserScore();
+    document.getElementById('cpu-wins').innerText = getComputerScore();
+}
 
 function computerPlay() {
      /*
@@ -98,11 +105,10 @@ function playRound(playerSelection, computerSelection) {
                 console.log("Something went wrong. :(");
     }
     
+    updateScore();
 
     
 }
-
-const buttons = document.querySelectorAll('button');
 
 buttons.forEach((button) => {
 
@@ -110,12 +116,6 @@ buttons.forEach((button) => {
     button.addEventListener('click', () => {
 
       playRound(button.id, computerPlay());
-      document.getElementById('user-wins').innerText = getUserScore();
-      document.getElementById('cpu-wins').innerText = getComputerScore();
-
-      if (isWinner) {
-        document.getElementById('game-text').innerText = "Someone won!";
-      } else return;
 
     });
   });
