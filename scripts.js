@@ -1,3 +1,5 @@
+//VARIABLES AND ASSIGNMENTS
+
 let playerScore = 0;
 let computerScore = 0;
 
@@ -5,6 +7,18 @@ document.getElementById('user-wins').innerText = getUserScore();
 document.getElementById('cpu-wins').innerText = getComputerScore();
 
 const buttons = document.querySelectorAll('button');
+buttons.forEach((button) => {
+
+    // and for each one we add a 'click' listener
+    button.addEventListener('click', () => {
+
+      playRound(button.id, computerPlay());
+
+    });
+  });
+
+// FUNCTIONS
+
 
 function getUserScore() {
     return playerScore;
@@ -14,12 +28,12 @@ function getComputerScore () {
     return computerScore;
 }
 
-function isWinner () { //should return false but is returning true when both score are 0
-    if (getUserScore() === 5 || getComputerScore() === 5) {
-        return true;
-    } else {
-        return false;
-    }
+function declareWinner () { //should return false but is returning true when both score are 0
+    if (getUserScore() === 5) {
+        document.getElementById('game-text').innerText = "Congratulations, you win!";
+    } else if (getComputerScore() === 5) {
+        document.getElementById('game-text').innerText = "Oh no, the computer won!";
+    } else return;
 }
 
 function updateScore() {
@@ -106,16 +120,8 @@ function playRound(playerSelection, computerSelection) {
     }
     
     updateScore();
+    declareWinner();
 
     
 }
 
-buttons.forEach((button) => {
-
-    // and for each one we add a 'click' listener
-    button.addEventListener('click', () => {
-
-      playRound(button.id, computerPlay());
-
-    });
-  });
