@@ -28,11 +28,20 @@ function getComputerScore () {
     return computerScore;
 }
 
+function hidebuttons () {
+    buttons.forEach((button) => {
+        button.style.display = "none";
+    })
+}
+
 function declareWinner () { //should return false but is returning true when both score are 0
     if (getUserScore() === 5) {
         document.getElementById('game-text').innerText = "Congratulations, you win!";
+        hidebuttons();
+
     } else if (getComputerScore() === 5) {
         document.getElementById('game-text').innerText = "Oh no, the computer won!";
+        hidebuttons();
     } else return;
 }
 
